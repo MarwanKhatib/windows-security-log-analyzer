@@ -33,5 +33,5 @@ dependencies = [
 [project.scripts]
 winsecan = "app:main"
 
-[tool.setuptools]
-py-modules = ["app", "models", "sources", "presentation"]
+[tool.setuptools.packages]
+find = {}
