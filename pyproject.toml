@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "winsecan"
-version = "0.1.1"
+version = "0.1.2"
 description = "Windows Security Log Analyzer CLI for SOC analysts"
 readme = "README.md"
 requires-python = ">=3.9"
@@ -35,4 +35,3 @@ winsecan = "app:main"
 
 [tool.setuptools]
 py-modules = ["app", "models", "sources", "presentation"]
-
