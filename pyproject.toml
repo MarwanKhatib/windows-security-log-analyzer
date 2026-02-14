@@ -4,11 +4,10 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "winsecan"
-version = "0.1.2"
+version = "0.1.3"
 description = "Windows Security Log Analyzer CLI for SOC analysts"
 readme = "README.md"
 requires-python = ">=3.9"
-url = "https://github.com/MarwanKhatib/windows-security-log-analyzer"
 license = { text = "MIT" }
 authors = [
   { name = "Marwan Khatib" }
@@ -30,6 +29,9 @@ dependencies = [
   "rich>=13.7.1",
   "pywin32>=306; platform_system == 'Windows'",
 ]
+
+[project.urls]
+Homepage = "https://github.com/MarwanKhatib/windows-security-log-analyzer"
 
 [project.scripts]
 winsecan = "app:main"
