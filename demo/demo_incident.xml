@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Events>
+  <!-- Incident 1: External RDP brute-force leading to privileged account compromise -->
+  <Event>
+    <TimeCreated>2026-02-14T10:15:00Z</TimeCreated>
+    <Id>4625</Id>
+    <Level>Warning</Level>
+    <Provider>Microsoft-Windows-Security-Auditing</Provider>
+    <MachineName>DC01</MachineName>
+    <Message>Failed logon attempt for user attacker@example.com from 10.0.0.50 using RDP.</Message>
+  </Event>
+  <Event>
+    <TimeCreated>2026-02-14T10:16:10Z</TimeCreated>
+    <Id>4625</Id>
+    <Level>Warning</Level>
+    <Provider>Microsoft-Windows-Security-Auditing</Provider>
+    <MachineName>DC01</MachineName>
+    <Message>Failed logon attempt for user administrator from 10.0.0.50 using RDP.</Message>
+  </Event>
+  <Event>
+    <TimeCreated>2026-02-14T10:17:30Z</TimeCreated>
+    <Id>4624</Id>
+    <Level>Information</Level>
+    <Provider>Microsoft-Windows-Security-Auditing</Provider>
+    <MachineName>DC01</MachineName>
+    <Message>Successful logon for user administrator from 10.0.0.50 using RDP.</Message>
+  </Event>
+  <Event>
+    <TimeCreated>2026-02-14T10:18:05Z</TimeCreated>
+    <Id>4688</Id>
+    <Level>Information</Level>
+    <Provider>Microsoft-Windows-Security-Auditing</Provider>
+    <MachineName>DC01</MachineName>
+    <Message>Process created: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe by administrator.</Message>
+  </Event>
+  <Event>
+    <TimeCreated>2026-02-14T10:19:40Z</TimeCreated>
+    <Id>4720</Id>
+    <Level>Information</Level>
+    <Provider>Microsoft-Windows-Security-Auditing</Provider>
+    <MachineName>DC01</MachineName>
+    <Message>User account created: svc_backdoor by administrator.</Message>
+  </Event>
+  <Event>
+    <TimeCreated>2026-02-14T10:20:15Z</TimeCreated>
+    <Id>4732</Id>
+    <Level>Information</Level>
+    <Provider>Microsoft-Windows-Security-Auditing</Provider>
+    <MachineName>DC01</MachineName>
+    <Message>User svc_backdoor was added to group Domain Admins.</Message>
+  </Event>
+  <Event>
+    <TimeCreated>2026-02-14T10:22:00Z</TimeCreated>
+    <Id>4798</Id>
+    <Level>Information</Level>
+    <Provider>Microsoft-Windows-Security-Auditing</Provider>
+    <MachineName>DC01</MachineName>
+    <Message>User administrator enumerated local group membership on DC01.</Message>
+  </Event>
+
+  <!-- Incident 2: Phished workstation user performing internal reconnaissance and lateral movement -->
+  <Event>
+    <TimeCreated>2026-02-14T11:05:10Z</TimeCreated>
+    <Id>4624</Id>
+    <Level>Information</Level>
+    <Provider>Microsoft-Windows-Security-Auditing</Provider>
+    <MachineName>WS01</MachineName>
+    <Message>Interactive logon for user alice from local console.</Message>
+  </Event>
+  <Event>
+    <TimeCreated>2026-02-14T11:06:20Z</TimeCreated>
+    <Id>4688</Id>
+    <Level>Information</Level>
+    <Provider>Microsoft-Windows-Security-Auditing</Provider>
+    <MachineName>WS01</MachineName>
+    <Message>Process created: C:\Windows\System32\cmd.exe /c whoami /groups by alice.</Message>
+  </Event>
+  <Event>
+    <TimeCreated>2026-02-14T11:07:05Z</TimeCreated>
+    <Id>4798</Id>
+    <Level>Information</Level>
+    <Provider>Microsoft-Windows-Security-Auditing</Provider>
+    <MachineName>WS01</MachineName>
+    <Message>User alice queried local group membership on WS01.</Message>
+  </Event>
+  <Event>
+    <TimeCreated>2026-02-14T11:08:30Z</TimeCreated>
+    <Id>4624</Id>
+    <Level>Information</Level>
+    <Provider>Microsoft-Windows-Security-Auditing</Provider>
+    <MachineName>FILE01</MachineName>
+    <Message>Network logon for user alice from WS01 to FILE01.</Message>
+  </Event>
+  <Event>
+    <TimeCreated>2026-02-14T11:09:15Z</TimeCreated>
+    <Id>4688</Id>
+    <Level>Information</Level>
+    <Provider>Microsoft-Windows-Security-Auditing</Provider>
+    <MachineName>FILE01</MachineName>
+    <Message>Process created: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -EncodedCommand ... by alice.</Message>
+  </Event>
+  <Event>
+    <TimeCreated>2026-02-14T11:10:40Z</TimeCreated>
+    <Id>4723</Id>
+    <Level>Information</Level>
+    <Provider>Microsoft-Windows-Security-Auditing</Provider>
+    <MachineName>FILE01</MachineName>
+    <Message>Password change attempt for local user service_account on FILE01.</Message>
+  </Event>
+
+  <!-- Incident 3: Admin cleanup after detecting compromise -->
+  <Event>
+    <TimeCreated>2026-02-14T12:00:00Z</TimeCreated>
+    <Id>4725</Id>
+    <Level>Information</Level>
+    <Provider>Microsoft-Windows-Security-Auditing</Provider>
+    <MachineName>DC01</MachineName>
+    <Message>User account svc_backdoor was disabled by administrator.</Message>
+  </Event>
+  <Event>
+    <TimeCreated>2026-02-14T12:01:10Z</TimeCreated>
+    <Id>4733</Id>
+    <Level>Information</Level>
+    <Provider>Microsoft-Windows-Security-Auditing</Provider>
+    <MachineName>DC01</MachineName>
+    <Message>User svc_backdoor was removed from group Domain Admins.</Message>
+  </Event>
+  <Event>
+    <TimeCreated>2026-02-14T12:02:30Z</TimeCreated>
+    <Id>4726</Id>
+    <Level>Information</Level>
+    <Provider>Microsoft-Windows-Security-Auditing</Provider>
+    <MachineName>DC01</MachineName>
+    <Message>User account svc_backdoor was deleted by administrator.</Message>
+  </Event>
+</Events>
