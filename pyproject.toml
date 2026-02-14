@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "winsecan"
+version = "0.1.0"
+description = "Windows Security Log Analyzer CLI for SOC analysts"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [
+  { name = "Marwan Khatib" }
+]
+keywords = ["windows", "security", "logs", "siem", "soc"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.9",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: Microsoft :: Windows",
+  "Intended Audience :: System Administrators",
+  "Intended Audience :: Information Technology",
+  "Topic :: Security",
+  "Topic :: System :: Monitoring",
+]
+dependencies = [
+  "colorama>=0.4.6",
+  "rich>=13.7.1",
+  "pywin32>=306; platform_system == 'Windows'",
+]
+
+[project.scripts]
+winsecan = "app:main"
+
+[tool.setuptools]
+py-modules = ["app", "models", "sources", "presentation"]
+
