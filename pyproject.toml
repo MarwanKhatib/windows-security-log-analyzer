@@ -8,8 +8,8 @@ version = "0.1.2"
 description = "Windows Security Log Analyzer CLI for SOC analysts"
 readme = "README.md"
 requires-python = ">=3.9"
+url = "https://github.com/MarwanKhatib/windows-security-log-analyzer"
 license = { text = "MIT" }
-authors = [
   { name = "Marwan Khatib" }
 ]
 keywords = ["windows", "security", "logs", "siem", "soc"]
