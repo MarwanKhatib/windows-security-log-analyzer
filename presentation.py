@@ -21,6 +21,8 @@ def truncate(text: str, max_length: int) -> str:
 
 
 def color_for_event(event: SecurityEvent, use_color: bool) -> str:
+    """Return a rich style name for an event based on its level."""
+
     if not use_color:
         return ""
     level = normalize_level_name(event.level)
@@ -71,6 +73,8 @@ def render_table(events: Iterable[SecurityEvent], use_color: bool) -> None:
 
 
 def render_vertical(events: Iterable[SecurityEvent], use_color: bool) -> None:
+    """Render security events as vertical cards with key/value pairs."""
+
     console = Console()
     for event in events:
         severity_style = color_for_event(event, use_color)

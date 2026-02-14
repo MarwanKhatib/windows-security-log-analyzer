@@ -279,18 +279,3 @@ Each of these IDs is mapped to a human-readable category in
   ```bash
   python app.py --levels warning,error,critical
   ```
-
----
-
-## Notes
-
-- Live mode currently supports only local Windows event logs.
-- Demo mode is OS-independent and can be used on non-Windows systems.
-- Colors and table formatting are handled by `colorama` and `rich`,
-  which are widely used and actively maintained. Keys like `Time`, `ID`,
-  `Level`, and `Category` are rendered in a neutral, high-contrast style,
-  while values are colored purely by event level:
-  - bright magenta – debug/verbose
-  - bright cyan – information
-  - bright yellow – warning
-  - bright red – error and critical

@@ -22,6 +22,8 @@ def is_windows() -> bool:
 
 
 def get_raw_events(log_name: str, max_events: int) -> List[dict]:
+    """Read raw events from a Windows event log and return them as dictionaries."""
+
     if not is_windows():
         raise RuntimeError("Windows Security Log Analyzer must be run on Windows")
     if win32evtlog is None or win32con is None:

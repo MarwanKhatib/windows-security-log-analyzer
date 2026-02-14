@@ -79,6 +79,8 @@ def build_arg_parser() -> argparse.ArgumentParser:
 
 
 def print_summary(events: Sequence[SecurityEvent]) -> None:
+    """Print a short summary of events grouped by category."""
+
     if not events:
         return
     total = len(events)
@@ -93,6 +95,8 @@ def filter_events_by_levels(
     events: Sequence[SecurityEvent],
     levels: Optional[Set[str]],
 ) -> List[SecurityEvent]:
+    """Return events whose normalized level is included in the levels filter."""
+
     if not levels:
         return list(events)
     allowed = levels
