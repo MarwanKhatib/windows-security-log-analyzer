@@ -58,13 +58,70 @@ Dependencies:
 
 ## Usage
 
+You can either run the tool directly from the source tree, or install the
+published package and use the `winsecan` command.
+
+### Installed CLI (`winsecan`)
+
+After installing from PyPI:
+
+```bash
+pip install winsecan
+```
+
+Run against the local Windows Security log:
+
+```bash
+winsecan
+```
+
+This will:
+
+- Query the `Security` log
+- Retrieve up to 500 recent events
+- Filter to important security event IDs
+- Render them in a colored vertical view
+
+Some common options:
+
+```bash
+# Show help
+winsecan --help
+
+# Increase the number of collected events
+winsecan --max-events 1000
+
+# Show all events instead of only important ones
+winsecan --all-events
+
+# Only include specific event IDs
+winsecan --event-ids 4624,4625,4688
+
+# Only include specific event levels
+winsecan --levels warning,error,critical
+
+# Export to CSV in addition to the terminal view
+winsecan --csv-output security_events.csv
+
+# Disable the rich UI and only export CSV
+winsecan --no-ui --csv-output security_events.csv
+
+# Hide noisy Local System logons (4624 / S-1-5-18)
+winsecan --hide-system-logons
+
+# Practice on the built-in demo incident
+winsecan --demo
+```
+
+### Running from source (`python app.py`)
+
 Change into the project directory:
 
 ```bash
 cd windows-security-log-analyzer
 ```
 
-### Live mode (real Windows Security log)
+#### Live mode (real Windows Security log)
 
 Live mode queries the local Windows Security event log via `win32evtlog`
 from `pywin32`. This usually requires an elevated terminal (Run as
@@ -111,7 +168,7 @@ python app.py --no-ui --csv-output security_events.csv
 python app.py --hide-system-logons
 ```
 
-### Demo mode (offline training with XML incidents)
+#### Demo mode (offline training with XML incidents)
 
 Demo mode does not touch the real Windows event log. It loads a static
 XML file that describes several related security incidents:
